@@ -69,7 +69,7 @@ export function HeroSection() {
                 variants={itemVariants}
                 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.1] tracking-tight text-balance mb-6 bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70"
               >
-                Master English by Reading the Greats
+                Read World Classics Without the Struggle.
               </motion.h1>
               <motion.p 
                 variants={itemVariants}
