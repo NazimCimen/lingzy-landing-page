@@ -2,6 +2,8 @@
 
 Lingzy is a modern application designed to help language learners read world classics in their original text, seamlessly adapted to their specific English level.
 
+**Live Site:** [https://www.lingzyapp.com/](https://www.lingzyapp.com/)
+
 ## 🌟 The Vision
 The mission behind Lingzy is to make classic literature accessible to everyone. Instead of struggling with complex original texts or feeling uninspired by oversimplified translations, Lingzy offers a bridge—empowering you to experience the authentic beauty of stories like *Sherlock Holmes* or *Dracula* at a level that feels natural and engaging.
 
