@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef } from "react"
-import { IPhoneMockup } from "@/components/iphone-mockup"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -105,10 +104,10 @@ export function ScreenshotsSection() {
             whileHover={{ y: -10 }}
             className="flex-shrink-0 snap-center flex flex-col items-center justify-center"
           >
-            <IPhoneMockup 
+            <img 
               src={screenshot.src} 
               alt={screenshot.alt}
-              className="shadow-2xl hover:shadow-[0_40px_80px_rgba(0,0,0,0.3)] transition-shadow duration-500"
+              className="w-[280px] sm:w-[300px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.2)] transition-all duration-500 hover:drop-shadow-[0_30px_60px_rgba(0,0,0,0.3)]"
             />
             <motion.span 
               initial={{ opacity: 0 }}

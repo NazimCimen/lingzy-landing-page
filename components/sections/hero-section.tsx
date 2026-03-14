@@ -1,6 +1,5 @@
 "use client"
 
-import { IPhoneMockup } from "@/components/iphone-mockup"
 import { AppStoreButtons } from "@/components/app-store-buttons"
 import { motion, Variants } from "framer-motion"
 
@@ -100,10 +99,10 @@ export function HeroSection() {
                   ease: "easeInOut" 
                 }}
               >
-                <IPhoneMockup 
+                <img 
                   src="/images/screenshots/books.png" 
                   alt="Lingzy Books Screen"
-                  className="shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-shadow duration-500"
+                  className="w-[280px] sm:w-[320px] lg:w-[360px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 hover:drop-shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
                 />
               </motion.div>
             </motion.div>
