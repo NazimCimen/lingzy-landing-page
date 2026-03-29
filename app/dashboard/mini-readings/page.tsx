@@ -449,7 +449,7 @@ export default function MiniReadingsPage() {
                             size="icon-sm"
                             onClick={() => openPages(content)}
                             className="text-muted-foreground hover:text-blue-600"
-                            title="Sayfaları Gör"
+                            title="View Pages"
                           >
                             <Eye className="w-3.5 h-3.5" />
                           </Button>
@@ -553,9 +553,9 @@ export default function MiniReadingsPage() {
             </div>
 
             <div className="space-y-2">
-              <Label>Aktif Seviyeler (active_levels)</Label>
+              <Label>Active Levels (active_levels)</Label>
               <p className="text-xs text-muted-foreground">
-                Uygulamada gösterilecek seviyeler
+                Levels to display in the app
               </p>
               <div className="flex flex-wrap gap-2">
                 {formData.levels.map((level) => (
@@ -661,7 +661,7 @@ export default function MiniReadingsPage() {
               {viewingContent?.title} — Sayfalar
             </DialogTitle>
             <DialogDescription>
-              Bu parçaya ait seviye bazlı sayfaları yönetin
+              Manage level-based pages for this content
             </DialogDescription>
           </DialogHeader>
 
@@ -678,7 +678,7 @@ export default function MiniReadingsPage() {
 
             {contentPages.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground text-sm">
-                Henüz sayfa eklenmemiş
+                No pages added yet.
               </div>
             ) : (
               <div className="space-y-2">
@@ -764,11 +764,11 @@ export default function MiniReadingsPage() {
         <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
-              {editingPage ? "Sayfayı Düzenle" : "Yeni Sayfa Ekle"}
+              {editingPage ? "Edit Page" : "Add New Page"}
             </DialogTitle>
             <DialogDescription>
-              {viewingContent?.title} için{" "}
-              {editingPage ? "sayfayı güncelleyin" : "yeni bir sayfa ekleyin"}
+              For {viewingContent?.title}{" "}
+              {editingPage ? "update the page" : "add a new page"}
             </DialogDescription>
           </DialogHeader>
 
@@ -816,10 +816,10 @@ export default function MiniReadingsPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="page-content">İçerik</Label>
+              <Label htmlFor="page-content">Content</Label>
               <Textarea
                 id="page-content"
-                placeholder="Sayfa içeriği..."
+                placeholder="Page content..."
                 value={pageFormData.content}
                 onChange={(e) =>
                   setPageFormData((prev) => ({
@@ -854,15 +854,15 @@ export default function MiniReadingsPage() {
                 variant="outline"
                 onClick={() => setIsPageFormOpen(false)}
               >
-                İptal
+                Cancel
               </Button>
               <Button type="submit" disabled={isSaving}>
                 {isSaving ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : editingPage ? (
-                  "Güncelle"
+                  "Update"
                 ) : (
-                  "Kaydet"
+                  "Save"
                 )}
               </Button>
             </DialogFooter>

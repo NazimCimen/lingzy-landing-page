@@ -309,10 +309,10 @@ export default function WorldClassicsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-foreground">
-            Dünya Klasikleri
+            World Classics
           </h1>
           <p className="text-muted-foreground mt-1">
-            Dünya klasiklerinden okuma parçalarını yönetin
+            Manage classic literature readings and ebooks
           </p>
         </div>
         <Button
@@ -320,7 +320,7 @@ export default function WorldClassicsPage() {
           className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:opacity-90 shadow-md shadow-emerald-500/20"
         >
           <Plus className="w-4 h-4 mr-2" />
-          Yeni Klasik Ekle
+          Add Classic Book
         </Button>
       </div>
 
@@ -331,7 +331,7 @@ export default function WorldClassicsPage() {
             <div className="relative flex-1">
               <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
               <Input
-                placeholder="Başlık, yazar veya kategori ile ara..."
+                placeholder="Search by title, author, or category..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9"
@@ -339,7 +339,7 @@ export default function WorldClassicsPage() {
             </div>
             <Badge variant="outline" className="self-start py-2 px-4">
               <BookOpen className="w-3.5 h-3.5 mr-1.5" />
-              {filteredEbooks.length} klasik
+              {filteredEbooks.length} classics
             </Badge>
           </div>
         </CardContent>
@@ -358,23 +358,23 @@ export default function WorldClassicsPage() {
                 <Globe className="w-8 h-8 text-muted-foreground" />
               </div>
               <p className="font-medium text-foreground">
-                Henüz klasik bulunamadı
+                No classics found
               </p>
               <Button onClick={openCreateForm} className="mt-4" size="sm">
                 <Plus className="w-4 h-4 mr-1" />
-                İlk Klasiği Ekle
+                Add First Classic
               </Button>
             </div>
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Kitap</TableHead>
-                  <TableHead>Yazar</TableHead>
-                  <TableHead>Kategori</TableHead>
-                  <TableHead>Sayfa</TableHead>
-                  <TableHead>Kaynak</TableHead>
-                  <TableHead className="text-right">İşlemler</TableHead>
+                  <TableHead>Book</TableHead>
+                  <TableHead>Author</TableHead>
+                  <TableHead>Category</TableHead>
+                  <TableHead>Pages</TableHead>
+                  <TableHead>Source</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -423,7 +423,7 @@ export default function WorldClassicsPage() {
                             className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
                           >
                             <ExternalLink className="w-3 h-3" />
-                            Kaynak
+                            Source
                           </a>
                         )}
                       </TableCell>
@@ -434,7 +434,7 @@ export default function WorldClassicsPage() {
                             size="icon-sm"
                             onClick={() => openPages(ebook)}
                             className="text-muted-foreground hover:text-blue-600"
-                            title="Sayfaları Gör"
+                            title="View Pages"
                           >
                             <Eye className="w-3.5 h-3.5" />
                           </Button>
@@ -470,22 +470,22 @@ export default function WorldClassicsPage() {
         <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
-              {editingEbook ? "Klasiği Düzenle" : "Yeni Dünya Klasiği Ekle"}
+              {editingEbook ? "Edit Classic" : "Add New World Classic"}
             </DialogTitle>
             <DialogDescription>
               {editingEbook
-                ? "Mevcut klasik bilgilerini güncelleyin"
-                : "Yeni bir dünya klasiği parçası oluşturun"}
+                ? "Update specific details of this classic"
+                : "Create a new classic literature representation"}
             </DialogDescription>
           </DialogHeader>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="wc-title">Başlık</Label>
+                <Label htmlFor="wc-title">Title</Label>
                 <Input
                   id="wc-title"
-                  placeholder="Eser adı"
+                  placeholder="Book title"
                   value={formData.title}
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, title: e.target.value }))
@@ -494,10 +494,10 @@ export default function WorldClassicsPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="wc-author">Yazar</Label>
+                <Label htmlFor="wc-author">Author</Label>
                 <Input
                   id="wc-author"
-                  placeholder="Yazarın adı"
+                  placeholder="Author's name"
                   value={formData.author}
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, author: e.target.value }))
@@ -509,7 +509,7 @@ export default function WorldClassicsPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Kategori</Label>
+                <Label>Category</Label>
                 <Select
                   value={formData.category}
                   onValueChange={(value) =>
@@ -532,11 +532,11 @@ export default function WorldClassicsPage() {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="wc-pages">Sayfa Sayısı</Label>
+                <Label htmlFor="wc-pages">Page Count</Label>
                 <Input
                   id="wc-pages"
                   type="number"
-                  placeholder="ör: 250"
+                  placeholder="e.g. 250"
                   value={formData.page_count}
                   onChange={(e) =>
                     setFormData((prev) => ({
@@ -549,10 +549,10 @@ export default function WorldClassicsPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="wc-desc">Açıklama (Opsiyonel)</Label>
+              <Label htmlFor="wc-desc">Description (Optional)</Label>
               <Textarea
                 id="wc-desc"
-                placeholder="Kısa açıklama..."
+                placeholder="Brief description..."
                 value={formData.description}
                 onChange={(e) =>
                   setFormData((prev) => ({
@@ -566,7 +566,7 @@ export default function WorldClassicsPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="wc-cover">Kapak Resmi URL</Label>
+                <Label htmlFor="wc-cover">Cover Image URL</Label>
                 <Input
                   id="wc-cover"
                   type="url"
@@ -589,7 +589,7 @@ export default function WorldClassicsPage() {
                 )}
               </div>
               <div className="space-y-2">
-                <Label htmlFor="wc-published">Yayın Tarihi</Label>
+                <Label htmlFor="wc-published">Published Date</Label>
                 <Input
                   id="wc-published"
                   type="date"
@@ -607,7 +607,7 @@ export default function WorldClassicsPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="wc-source-url">Kaynak URL</Label>
+                <Label htmlFor="wc-source-url">Source URL</Label>
                 <Input
                   id="wc-source-url"
                   type="url"
@@ -623,7 +623,7 @@ export default function WorldClassicsPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="wc-source-provider">Kaynak Sağlayıcı</Label>
+                <Label htmlFor="wc-source-provider">Source Provider</Label>
                 <Input
                   id="wc-source-provider"
                   placeholder="project_gutenberg"
@@ -640,7 +640,7 @@ export default function WorldClassicsPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="wc-license">Lisans</Label>
+              <Label htmlFor="wc-license">License</Label>
               <Input
                 id="wc-license"
                 placeholder="Public Domain"
@@ -661,7 +661,7 @@ export default function WorldClassicsPage() {
                 variant="outline"
                 onClick={() => setIsFormOpen(false)}
               >
-                İptal
+                Cancel
               </Button>
               <Button
                 type="submit"
@@ -671,9 +671,9 @@ export default function WorldClassicsPage() {
                 {isSaving ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : editingEbook ? (
-                  "Güncelle"
+                  "Update"
                 ) : (
-                  "Kaydet"
+                  "Save"
                 )}
               </Button>
             </DialogFooter>
@@ -687,24 +687,23 @@ export default function WorldClassicsPage() {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <AlertCircle className="w-5 h-5 text-destructive" />
-              Silme Onayı
+              Delete Confirmation
             </DialogTitle>
             <DialogDescription>
-              <strong>&quot;{deletingEbook?.title}&quot;</strong> kitabını ve
-              tüm sayfalarını silmek istediğinize emin misiniz? Bu işlem geri
-              alınamaz.
+              Are you sure you want to delete <strong>&quot;{deletingEbook?.title}&quot;</strong> and
+              all of its pages? This action cannot be undone.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={() => setIsDeleteOpen(false)}>
-              İptal
+              Cancel
             </Button>
             <Button
               variant="destructive"
               onClick={handleDelete}
               disabled={isSaving}
             >
-              {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : "Sil"}
+              {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : "Delete"}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -716,27 +715,27 @@ export default function WorldClassicsPage() {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-emerald-600" />
-              {viewingEbook?.title} — Sayfalar
+              {viewingEbook?.title} — Pages
             </DialogTitle>
             <DialogDescription>
-              {viewingEbook?.author} · {ebookPages.length} sayfa
+              {viewingEbook?.author} · {ebookPages.length} pages
             </DialogDescription>
           </DialogHeader>
 
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <Badge variant="outline" className="py-1.5 px-3">
-                {ebookPages.length} sayfa
+                {ebookPages.length} pages
               </Badge>
               <Button size="sm" onClick={openPageCreateForm}>
                 <Plus className="w-3.5 h-3.5 mr-1" />
-                Sayfa Ekle
+                Add Page
               </Button>
             </div>
 
             {ebookPages.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground text-sm">
-                Henüz sayfa eklenmemiş
+                No pages added yet.
               </div>
             ) : (
               <div className="space-y-2">
@@ -825,18 +824,17 @@ export default function WorldClassicsPage() {
         <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
-              {editingPage ? "Sayfayı Düzenle" : "Yeni Sayfa Ekle"}
+              {editingPage ? "Edit Page" : "Add New Page"}
             </DialogTitle>
             <DialogDescription>
-              {viewingEbook?.title} için{" "}
-              {editingPage ? "sayfayı güncelleyin" : "yeni bir sayfa ekleyin"}
+              {editingPage ? "Update current page structure" : "Add a new page for"} {viewingEbook?.title}
             </DialogDescription>
           </DialogHeader>
 
           <form onSubmit={handlePageSubmit} className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="ep-order">Sıra No</Label>
+                <Label htmlFor="ep-order">Order</Label>
                 <Input
                   id="ep-order"
                   type="number"
@@ -852,10 +850,10 @@ export default function WorldClassicsPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="ep-title">Bölüm Başlığı (Opsiyonel)</Label>
+                <Label htmlFor="ep-title">Section Title (Optional)</Label>
                 <Input
                   id="ep-title"
-                  placeholder="ör: Chapter 1"
+                  placeholder="e.g. Chapter 1"
                   value={pageFormData.title}
                   onChange={(e) =>
                     setPageFormData((prev) => ({
@@ -868,10 +866,10 @@ export default function WorldClassicsPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="ep-content">İçerik</Label>
+              <Label htmlFor="ep-content">Content</Label>
               <Textarea
                 id="ep-content"
-                placeholder="Sayfa içeriği..."
+                placeholder="Page content..."
                 value={pageFormData.content}
                 onChange={(e) =>
                   setPageFormData((prev) => ({
@@ -890,15 +888,15 @@ export default function WorldClassicsPage() {
                 variant="outline"
                 onClick={() => setIsPageFormOpen(false)}
               >
-                İptal
+                Cancel
               </Button>
               <Button type="submit" disabled={isSaving}>
                 {isSaving ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : editingPage ? (
-                  "Güncelle"
+                  "Update"
                 ) : (
-                  "Kaydet"
+                  "Save"
                 )}
               </Button>
             </DialogFooter>

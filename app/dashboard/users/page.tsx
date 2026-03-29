@@ -569,7 +569,7 @@ export default function UsersPage() {
               </div>
               <div>
                 <p className="font-semibold text-foreground">
-                  {revokingUser?.full_name || "İsimsiz"}
+                  {revokingUser?.full_name || "Unnamed"}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {revokingUser?.email_address || "—"}
