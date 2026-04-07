@@ -4,7 +4,6 @@ import { supabaseAdmin } from "@/lib/supabase-server"
 import { revalidatePath } from "next/cache"
 import type { Ebook, EbookPage } from "@/lib/types"
 
-// Kitap Ekleme (Create)
 export async function createEbookAction(data: Omit<Ebook, "id" | "created_at" | "updated_at">) {
   try {
     const { data: result, error } = await supabaseAdmin
@@ -21,7 +20,6 @@ export async function createEbookAction(data: Omit<Ebook, "id" | "created_at" | 
   }
 }
 
-// Kitap Güncelleme (Update)
 export async function updateEbookAction(id: string, data: Partial<Ebook>) {
   try {
     const { data: result, error } = await supabaseAdmin
@@ -39,7 +37,6 @@ export async function updateEbookAction(id: string, data: Partial<Ebook>) {
   }
 }
 
-// Kitap Silme (Delete)
 export async function deleteEbookAction(id: string) {
   try {
     const { error } = await supabaseAdmin.from("ebook").delete().eq("id", id)
@@ -51,7 +48,6 @@ export async function deleteEbookAction(id: string) {
   }
 }
 
-// E-Kitap Tekil Sayfa Ekleme (Create Page)
 export async function createEbookPageAction(data: Omit<EbookPage, "id" | "created_at" | "updated_at">) {
   try {
     const { data: result, error } = await supabaseAdmin
@@ -68,7 +64,6 @@ export async function createEbookPageAction(data: Omit<EbookPage, "id" | "create
   }
 }
 
-// E-Kitap Tekil Sayfa Güncelleme (Update Page)
 export async function updateEbookPageAction(id: string, data: Partial<EbookPage>) {
   try {
     const { data: result, error } = await supabaseAdmin
@@ -86,7 +81,6 @@ export async function updateEbookPageAction(id: string, data: Partial<EbookPage>
   }
 }
 
-// E-Kitap Tekil Sayfa Silme (Delete Page)
 export async function deleteEbookPageAction(id: string) {
   try {
     const { error } = await supabaseAdmin
