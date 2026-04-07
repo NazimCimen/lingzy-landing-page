@@ -4,7 +4,6 @@ import { supabaseAdmin } from "@/lib/supabase-server"
 import { revalidatePath } from "next/cache"
 import type { Content, ContentPage } from "@/lib/types"
 
-// Okuma Parçası Ekleme (Create)
 export async function createContentAction(data: Omit<Content, "id" | "created_at" | "updated_at">) {
   try {
     const { data: result, error } = await supabaseAdmin
@@ -14,7 +13,6 @@ export async function createContentAction(data: Omit<Content, "id" | "created_at
       .single()
 
     if (error) return { success: false, error: error.message }
-    // Değişiklik sonrası ön yüzü tazele
     revalidatePath("/dashboard/mini-readings")
     return { success: true, data: result }
   } catch (err: any) {
@@ -22,7 +20,6 @@ export async function createContentAction(data: Omit<Content, "id" | "created_at
   }
 }
 
-// Okuma Parçası Güncelleme (Update)
 export async function updateContentAction(id: string, data: Partial<Content>) {
   try {
     const { data: result, error } = await supabaseAdmin
@@ -40,7 +37,6 @@ export async function updateContentAction(id: string, data: Partial<Content>) {
   }
 }
 
-// Okuma Parçası Silme (Delete)
 export async function deleteContentAction(id: string) {
   try {
     const { error } = await supabaseAdmin.from("content").delete().eq("id", id)
@@ -52,7 +48,6 @@ export async function deleteContentAction(id: string) {
   }
 }
 
-// Tekil Sayfa Ekleme (Create Page)
 export async function createContentPageAction(data: Omit<ContentPage, "id" | "created_at" | "updated_at">) {
   try {
     const { data: result, error } = await supabaseAdmin
@@ -69,7 +64,6 @@ export async function createContentPageAction(data: Omit<ContentPage, "id" | "cr
   }
 }
 
-// Tekil Sayfa Güncelleme (Update Page)
 export async function updateContentPageAction(id: string, data: Partial<ContentPage>) {
   try {
     const { data: result, error } = await supabaseAdmin
@@ -87,7 +81,6 @@ export async function updateContentPageAction(id: string, data: Partial<ContentP
   }
 }
 
-// Tekil Sayfa Silme (Delete Page)
 export async function deleteContentPageAction(id: string) {
   try {
     const { error } = await supabaseAdmin
